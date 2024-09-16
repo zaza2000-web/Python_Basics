@@ -1,8 +1,9 @@
-import sys
-from pyfiglet import Figlet
+import emoji
 
 def main():
-    f = Figlet(font = 'slant')
-    print(f.renderText("Hello"))
+    text = input("Write emoji like: :thumbsup: ")
+    emojized = emoji.emojize(f"{text}", language = "alias")
+    print(emojized)
+ 
 
 main()
