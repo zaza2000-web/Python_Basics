@@ -1,5 +1,5 @@
 import random
-import sys
+
 
 
 def main():
@@ -31,12 +31,6 @@ def main():
 
 
     print(f"Your score is: {score}")
-
-
-
-
-
-
 
 def get_level():
     while True:
