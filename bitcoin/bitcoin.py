@@ -5,7 +5,7 @@ def main():
     try:
         response = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
         jsoned = response.json()
-        rate_float = jsoned['bpi']['USD']['rate']
+        rate_float = jsoned['bpi']['USD']['rate_float']
 
     except requests.RequestException:
         print("Some problems with API")
@@ -14,12 +14,18 @@ def main():
         try:
             argument = float(sys.argv[1])
 
-            if argument.is_integer() and isinstance(argument,float):
+            if argument.is_integer():
                 argument = int(argument)
-            print(f"{argument * rate_float}")    
+                total = argument * rate_float
+                print(f"${total:,.4f}")
+            elif isinstance(argument,float):
+                argument = float(argument)
+                total = argument * rate_float
+                print(f"${total:,.4f}")
+
+
         except ValueError:
-            pass
-            return
+            sys.exit(1)
     else:
         sys.exit(1)
 
